@@ -59,7 +59,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.datavec.api.records.metadata.RecordMetaData;
 import org.deeplearning4j.eval.meta.Prediction;
-
+import org.nd4j.linalg.dataset.SplitTestAndTrain;
 
 
 
@@ -116,12 +116,12 @@ public class SparkNN {
         try {
             System.out.println("hello world");
             //Second: the RecordReaderDataSetIterator handles conversion to DataSet objects, ready for use in neural network
-            int labelIndex = 101;     //5 values in each row of the animals.csv CSV: 4 input features followed by an integer label (class) index. Labels are the 5th value (index 4) in each row
-            int numClasses = 11;     //3 classes (types of animals) in the animals data set. Classes have integer values 0, 1 or 2
+            int labelIndex = 100;     //5 values in each row of the animals.csv CSV: 4 input features followed by an integer label (class) index. Labels are the 5th value (index 4) in each row
+            int numClasses = 2;     //3 classes (types of animals) in the animals data set. Classes have integer values 0, 1 or 2
 
 
-            String trainingFileName = "train_most100.csv";
-            String testingFileName = "dev_most100.csv";
+            String trainingFileName = "most_100_new.csv";
+            //String testingFileName = "dev_most100.csv";
 
 
 
@@ -129,21 +129,21 @@ public class SparkNN {
             // number of rows of the training csv file
 
 
-            DataSet trainDataSet = readCSVDataset(trainingFileName,
+            DataSet trainDataSet1 = readCSVDataset(trainingFileName,
                     batchSizeTraining, labelIndex, numClasses);
 
-            //SplitTestAndTrain testAndTrain = trainingData1.splitTestAndTrain(0.65);  //Use 65% of data for training
+            SplitTestAndTrain testAndTrain = trainDataSet1.splitTestAndTrain(0.65);  //Use 65% of data for training
 
             // this is the data we want to classify
-            int batchSizeTest = getRowCount(testingFileName);          // number of rows of the test csv file
+            //int batchSizeTest = getRowCount(testingFileName);          // number of rows of the test csv file
 
-            DataSet testDataSet = readCSVDataset(testingFileName,
-                    batchSizeTest, labelIndex, numClasses);
+            //DataSet testDataSet = readCSVDataset(testingFileName,
+            //        batchSizeTest, labelIndex, numClasses);
 
 
 
-            //DataSet trainingData = testAndTrain.getTrain();
-            //DataSet testData = testAndTrain.getTest();
+            DataSet trainDataSet = testAndTrain.getTrain();
+            DataSet testDataSet = testAndTrain.getTest();
 
             // make the data model for records prior to normalization, because it
             // changes the data.
@@ -160,8 +160,8 @@ public class SparkNN {
             normalizer.transform(trainDataSet);     //Apply normalization to the training data
             normalizer.transform(testDataSet);         //Apply normalization to the test data. This is using statistics calculated from the *training* set
 
-            final int numInputs = 101; // features
-            int outputNum = 11; // class labels
+            final int numInputs = 100; // features
+            int outputNum = 2; // class labels
             int epochs = 1000;
             long seed = 6;
 
@@ -190,10 +190,10 @@ public class SparkNN {
                     .updater(new Sgd(0.1))
                     .l2(1e-4)
                     .list()
-                    .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(11).build())
-                    .layer(1, new DenseLayer.Builder().nIn(11).nOut(11).build())
+                    .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(outputNum).build())
+                    .layer(1, new DenseLayer.Builder().nIn(outputNum).nOut(outputNum).build())
                     .layer(2, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
-                            .activation(Activation.SOFTMAX).nIn(11).nOut(outputNum).build())
+                            .activation(Activation.SOFTMAX).nIn(outputNum).nOut(outputNum).build())
                     .backprop(true).pretrain(false)
                     .build();
 
@@ -222,9 +222,9 @@ public class SparkNN {
             List<DataSet> trainDataList = trainDataSet.asList();
             List<DataSet> testDataList = testDataSet.asList();
 
-            for(int i = 0; i< 100; i++){
+            /*for(int i = 0; i< 100; i++){
                 System.out.println(trainDataList.get(i));
-            }
+            }*/
 
             System.out.println("Check Size: "+trainDataList.size()+" "+testDataList.size());
 
@@ -277,7 +277,7 @@ public class SparkNN {
 
             //evaluate the model on the test set
             //System.out.println("evaluating 1 ?");
-            Evaluation eval = new Evaluation(11);
+            Evaluation eval = new Evaluation(outputNum);
             //System.out.println("evaluating 1 ?");
             INDArray output = sparkNetwork.getNetwork().output(testDataSet.getFeatureMatrix());
             //System.out.println("evaluating 1 ?");
