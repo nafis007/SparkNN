@@ -1,0 +1,154 @@
+Check Size: 3250 1750
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.7097
+ Precision:       0.5104
+ Recall:          0.6415	(1 class excluded from average)
+ F1 Score:        0.6532	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+  236  380   52 | 0 = 0
+   57 1006   19 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+Check Size: 6500 3500
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.7886
+ Precision:       0.8309	(1 class excluded from average)
+ Recall:          0.7338	(1 class excluded from average)
+ F1 Score:        0.7469	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average precision
+Classes excluded from average precision: [2]
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+  670  669    0 | 0 = 0
+   71 2090    0 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+Check Size: 9750 5250
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.8638
+ Precision:       0.8795	(1 class excluded from average)
+ Recall:          0.8270	(1 class excluded from average)
+ F1 Score:        0.8436	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average precision
+Classes excluded from average precision: [2]
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+ 1323  591    0 | 0 = 0
+  124 3212    0 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+Check Size: 13000 7000
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.8941
+ Precision:       0.9000	(1 class excluded from average)
+ Recall:          0.8722	(1 class excluded from average)
+ F1 Score:        0.8829	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average precision
+Classes excluded from average precision: [2]
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+ 2047  554    0 | 0 = 0
+  187 4212    0 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+Check Size: 16250 8750
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.9071
+ Precision:       0.9108	(1 class excluded from average)
+ Recall:          0.8904	(1 class excluded from average)
+ F1 Score:        0.8987	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average precision
+Classes excluded from average precision: [2]
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+ 2711  584    0 | 0 = 0
+  229 5226    0 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+Check Size: 19500 10500
+
+
+========================Evaluation Metrics========================
+ # of classes:    3
+ Accuracy:        0.9123
+ Precision:       0.9086	(1 class excluded from average)
+ Recall:          0.9038	(1 class excluded from average)
+ F1 Score:        0.9061	(1 class excluded from average)
+Precision, recall & F1: macro-averaged (equally weighted avg. of 3 classes)
+
+Warning: 1 class was never predicted by the model and was excluded from average precision
+Classes excluded from average precision: [2]
+Warning: 1 class was never predicted by the model and was excluded from average recall
+Classes excluded from average recall: [2]
+
+=========================Confusion Matrix=========================
+    0    1    2
+----------------
+ 3439  516    0 | 0 = 0
+  405 6140    0 | 1 = 1
+    0    0    0 | 2 = 2
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+

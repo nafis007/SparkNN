@@ -1,0 +1,240 @@
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9183
+ Precision:       0.9128
+ Recall:          0.9144
+ F1 Score:        0.9337
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+  600   68 | 0 = 0
+   75 1007 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9191
+ Precision:       0.9142
+ Recall:          0.9148
+ F1 Score:        0.9344
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 1200  139 | 0 = 0
+  144 2017 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9164
+ Precision:       0.9111
+ Recall:          0.9078
+ F1 Score:        0.9345
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 1677  237 | 0 = 0
+  202 3134 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9134
+ Precision:       0.9074
+ Recall:          0.9072
+ F1 Score:        0.9312
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 2296  305 | 0 = 0
+  301 4098 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9165
+ Precision:       0.9145
+ Recall:          0.9065
+ F1 Score:        0.9339
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 2854  441 | 0 = 0
+  290 5165 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.9189
+ Precision:       0.9144
+ Recall:          0.9125
+ F1 Score:        0.9351
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 3507  448 | 0 = 0
+  404 6141 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8714
+ Precision:       0.8726
+ Recall:          0.8525
+ F1 Score:        0.8997
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+  516  152 | 0 = 0
+   73 1009 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8760
+ Precision:       0.8793
+ Recall:          0.8563
+ F1 Score:        0.9035
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 1034  305 | 0 = 0
+  129 2032 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8783
+ Precision:       0.8784
+ Recall:          0.8558
+ F1 Score:        0.9074
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 1479  435 | 0 = 0
+  204 3132 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8801
+ Precision:       0.8807
+ Recall:          0.8600
+ F1 Score:        0.9078
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 2033  568 | 0 = 0
+  271 4128 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8783
+ Precision:       0.8799
+ Recall:          0.8585
+ F1 Score:        0.9058
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 2564  731 | 0 = 0
+  334 5121 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
+
+
+========================Evaluation Metrics========================
+ # of classes:    2
+ Accuracy:        0.8774
+ Precision:       0.8796
+ Recall:          0.8570
+ F1 Score:        0.9053
+Precision, recall & F1: reported for positive class (class 1 - "1") only
+
+
+=========================Confusion Matrix=========================
+    0    1
+-----------
+ 3062  893 | 0 = 0
+  394 6151 | 1 = 1
+
+Confusion matrix format: Actual (rowClass) predicted as (columnClass) N times
+==================================================================
+
