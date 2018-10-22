@@ -16,8 +16,12 @@ import com.beust.jcommander.ParameterException;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.deeplearning4j.nn.api.OptimizationAlgorithm;
 import org.deeplearning4j.nn.conf.MultiLayerConfiguration;
 import org.deeplearning4j.nn.conf.NeuralNetConfiguration;
+import org.deeplearning4j.nn.conf.Updater;
+import org.deeplearning4j.nn.conf.layers.ConvolutionLayer;
+import org.deeplearning4j.nn.conf.layers.SubsamplingLayer;
 import org.deeplearning4j.nn.weights.WeightInit;
 import org.deeplearning4j.spark.api.TrainingMaster;
 import org.deeplearning4j.spark.impl.multilayer.SparkDl4jMultiLayer;
@@ -100,9 +104,9 @@ public class SparkNN {
 
     private static String trainingFileNameGlobal = "top_50_new.csv";
 
-    private static String testingFileNameGlobal = "test_top_50_new.csv";
+    //private static String testingFileNameGlobal = "test_top_50_new.csv";
 
-    //private static String testingFileNameGlobal = null;
+    private static String testingFileNameGlobal = null;
 
     private static int numInputs = 100; // features   // for us 100
 
@@ -111,6 +115,8 @@ public class SparkNN {
     private static int labelIndex = numInputs;
 
     private static int numClasses = outputNum;
+
+    private static int hiddenLayerNeuronNumber = 3;
 
     /*public SparkNN(int numEpochs, int batchSizePerWorker) {
         this.numEpochs = numEpochs;
@@ -150,7 +156,12 @@ public class SparkNN {
         SparkDl4jMultiLayer sparkNetwork = configureLearningNetwork(sc,tm);
 
         TrainingModel trainingModel = buildTrainedModel(trainingFileNameGlobal,testingFileNameGlobal,5,sc,tm,sparkNetwork);
+
+        //TrainingModel testModel = getTestData(trainingFileNameGlobal,testingFileNameGlobal);
+
         evaluateModel(trainingModel.sparkNetwork,trainingModel.testDataSet,trainingModel.testMetaData);
+
+        //evaluateModel(trainingModel.sparkNetwork,testModel.testDataSet,testModel.testMetaData);
 
 
 
@@ -262,6 +273,34 @@ public class SparkNN {
         } */
     }
 
+    /* public static TrainingModel getTestData(String trainFile, String testFile) throws IOException, InterruptedException {
+        String trainingFileName = trainFile;
+        String testingFileName = testFile;
+
+
+        // number of rows of the training csv file
+        int batchSizeTraining = getRowCount(trainingFileName); //Iris data set: 150 examples total. We are loading all of them into one DataSet (not recommended for large data sets)
+        int batchSizeTest = getRowCount(testingFileName);          // number of rows of the test csv file
+
+
+        //////////////This is for separate evaluation specially to generate output label/////////////////////
+        DataSet trainDataSet = readCSVDataset(trainingFileName, batchSizeTraining, labelIndex, numClasses);
+        DataSet testDataSet = readCSVDataset(testingFileName, batchSizeTest, labelIndex, numClasses);
+
+        List<RecordMetaData> testMetaData = testDataSet.getExampleMetaData(RecordMetaData.class); // needed to call in the eval method
+
+
+
+        DataNormalization normalizer = new NormalizerStandardize();
+        normalizer.fit(trainDataSet);           //Collect the statistics (mean/stdev) from the training data. This does not modify the input data
+        normalizer.transform(trainDataSet);     //Apply normalization to the training data
+        normalizer.transform(testDataSet);
+
+        TrainingModel testModel = new TrainingModel(null,testDataSet,testMetaData);
+
+        return  testModel;
+    } */
+
     public static Evaluation evaluateModel(SparkDl4jMultiLayer sparkNetwork, DataSet testDataSet, List<RecordMetaData> testMetaData) {
         log.info("***** Evaluation *****");
 
@@ -363,12 +402,13 @@ public class SparkNN {
                 .updater(new Sgd(0.1))
                 .l2(1e-4)
                 .list()
-                .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(outputNum).build())
-                .layer(1, new DenseLayer.Builder().nIn(outputNum).nOut(outputNum).build())
+                .layer(0, new DenseLayer.Builder().nIn(numInputs).nOut(hiddenLayerNeuronNumber).build())
+                .layer(1, new DenseLayer.Builder().nIn(hiddenLayerNeuronNumber).nOut(hiddenLayerNeuronNumber).build())
                 .layer(2, new OutputLayer.Builder(LossFunctions.LossFunction.NEGATIVELOGLIKELIHOOD)
-                        .activation(Activation.SOFTMAX).nIn(outputNum).nOut(outputNum).build())
+                        .activation(Activation.SOFTMAX).nIn(hiddenLayerNeuronNumber).nOut(outputNum).build())
                 .backprop(true).pretrain(false)
                 .build();
+
 
 
         SparkDl4jMultiLayer sparkNetwork = new SparkDl4jMultiLayer(sc, conf, tm);

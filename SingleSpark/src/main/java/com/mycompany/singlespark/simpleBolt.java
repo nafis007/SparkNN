@@ -57,6 +57,7 @@ public class simpleBolt extends BaseRichBolt {
 	        this.outputDirectory = conf.get("dirToWrite").toString();
 	        this.fileName = "output" +".csv";
 			this.testFileName = null;
+			//this.testFileName = "test_top_50_new.csv";
 
 	        count = 0;
 	        this.sNN = new SparkNN();
@@ -106,9 +107,12 @@ public class simpleBolt extends BaseRichBolt {
 
 				TrainingModel preBuiltModel = this.sNN.buildTrainedModel(this.fileName,this.testFileName,5,this.sc,this.tm, this.sparkNetwork);
 
+			//	TrainingModel testModel = this.sNN.getTestData(this.fileName, this.testFileName);
 
 				Evaluation evaluation = this.sNN.evaluateModel(preBuiltModel.sparkNetwork,preBuiltModel.testDataSet,preBuiltModel.testMetaData);
-				writeToFile("testResultGenerate.txt",evaluation.accuracy()+"\n");
+
+			//	Evaluation evaluation = this.sNN.evaluateModel(preBuiltModel.sparkNetwork,testModel.testDataSet,testModel.testMetaData);
+				writeToFile("testResultGenerate.txt",evaluation.accuracy()+","+evaluation.recall()+","+evaluation.precision()+"\n");
 
 			} catch (Exception e) {
 				e.printStackTrace();
